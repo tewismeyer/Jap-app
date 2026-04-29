@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light only">
+  <meta name="theme-color" content="#f8f9fb">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NihoNova v10 – Dialogue + PWA</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .catch(err => console.log('SW error', err));
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+
+    <header class="app-header">
+      <div class="app-title">
+        <span class="logo-dot"></span>
+        <span>NihoNova</span>
+      </div>
+      <div class="app-level-pill">
+        JLPT N5 · Streak 7🔥
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- SECTION LEÇONS (style Duolingo) -->
+      <section class="section-block">
+        <h2 class="section-title">Parcours</h2>
+        <div class="lesson-grid">
+          <button class="lesson-card lesson-card--active">
+            <span class="lesson-emoji">🌸</span>
+            <span class="lesson-title">Hiragana 1</span>
+            <span class="lesson-sub">あ · い · う · え · お</span>
+          </button>
+          <button class="lesson-card">
+            <span class="lesson-emoji">🍵</span>
+            <span class="lesson-title">Phrases de base</span>
+            <span class="lesson-sub">こんにちは · ありがとう</span>
+          </button>
+          <button class="lesson-card">
+            <span class="lesson-emoji">🚉</span>
+            <span class="lesson-title">Voyage</span>
+            <span class="lesson-sub">駅 · 電車 · 切符</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION DIALOGUE -->
+      <section class="section-block" id="dialogue-section">
+        <h2 class="section-title">Mode dialogue</h2>
+        <p class="section-subtitle">
+          Entraîne-toi comme si tu parlais avec un natif.  
+          Tape en français ou en japonais, NihoNova s’adapte.
+        </p>
+
+        <div class="dialogue-card">
+          <div id="dialogue-messages" class="dialogue-messages">
+            <!-- Messages injectés par JS -->
+          </div>
+
+          <form id="dialogue-form" class="dialogue-form">
+            <input
+              id="dialogue-input"
+              type="text"
+              autocomplete="off"
+              placeholder="Écris ta phrase…"
+            >
+            <button type="submit" class="btn-send">Envoyer</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn nav-btn--active">
+        <span>🏠</span>
+        <span>Accueil</span>
+      </button>
+      <button class="nav-btn">
+        <span>💬</span>
+        <span>Dialogue</span>
+      </button>
+      <button class="nav-btn">
+        <span>📚</span>
+        <span>Révision</span>
+      </button>
+      <button class="nav-btn">
+        <span>👤</span>
+        <span>Profil</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
